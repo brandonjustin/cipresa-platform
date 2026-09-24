@@ -41,7 +41,13 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   manifest: '/manifest.json',
-  icons: { icon: '/favicon.ico', apple: '/icons/icon-192x192.png' },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+      { url: '/icons/icon.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: '/icons/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

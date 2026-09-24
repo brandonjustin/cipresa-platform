@@ -279,6 +279,10 @@ export const Navbar = () => {
                   </Link>
                 </div>
               ) : (
+                <>
+                <Link href="/auth/login" title="Se connecter" aria-label="Se connecter" className={cn(iconButton, 'sm:hidden')}>
+                  <User className="h-[18px] w-[18px]" />
+                </Link>
                 <div className="ml-2 hidden items-center gap-2 sm:flex">
                   <Link
                     href="/auth/login"
@@ -294,6 +298,7 @@ export const Navbar = () => {
                     <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-45" />
                   </Link>
                 </div>
+                </>
               )}
 
               <button
@@ -313,8 +318,28 @@ export const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-30 pt-[60px] md:hidden">
           <div className="absolute inset-0 bg-black/50" onClick={toggleMobileMenu} />
-          <div className="relative max-h-[calc(100vh-60px)] overflow-y-auto border-t border-white/10 bg-black font-[var(--font-poppins)]">
+          {/* dvh, not vh: on phones 100vh includes the area behind the browser
+              toolbar, which cut off the bottom of the menu. */}
+          <div className="relative max-h-[calc(100dvh-60px)] overflow-y-auto border-t border-white/10 bg-black font-[var(--font-poppins)]">
             <div className="space-y-1 px-5 py-5">
+              {!isAuthenticated && (
+                <div className="grid grid-cols-2 gap-2 pb-3">
+                  <Link
+                    href="/auth/login"
+                    onClick={toggleMobileMenu}
+                    className="inline-flex h-11 items-center justify-center border border-white/30 text-[13px] font-semibold text-white transition-colors hover:bg-white hover:text-black"
+                  >
+                    Connexion
+                  </Link>
+                  <Link
+                    href="/auth/register"
+                    onClick={toggleMobileMenu}
+                    className="inline-flex h-11 items-center justify-center bg-[#ff7a3d] text-[13px] font-semibold text-white transition-colors hover:bg-white hover:text-black"
+                  >
+                    S&apos;inscrire
+                  </Link>
+                </div>
+              )}
               {navLinks.map((link) => {
                 if ('columns' in link) {
                   return (
@@ -350,8 +375,9 @@ export const Navbar = () => {
                   </Link>
                 );
               })}
-              <hr className="!my-4 border-white/10" />
-              {isAuthenticated ? (
+              {isAuthenticated && (
+                <>
+                <hr className="!my-4 border-white/10" />
                 <div className="space-y-1">
                   <Link href="/dashboard" onClick={toggleMobileMenu} className="flex items-center gap-3 px-3 py-2.5 text-white/70 hover:bg-white/10 hover:text-white">
                     <User className="h-[18px] w-[18px]" /> <span className="text-[14px] font-medium">Mon tableau de bord</span>
@@ -363,23 +389,7 @@ export const Navbar = () => {
                     <LogOut className="h-[18px] w-[18px]" /> <span className="text-[14px] font-medium">Déconnexion</span>
                   </button>
                 </div>
-              ) : (
-                <div className="grid grid-cols-2 gap-2">
-                  <Link
-                    href="/auth/login"
-                    onClick={toggleMobileMenu}
-                    className="inline-flex h-11 items-center justify-center border border-white/30 text-[13px] font-semibold text-white transition-colors hover:bg-white hover:text-black"
-                  >
-                    Connexion
-                  </Link>
-                  <Link
-                    href="/auth/register"
-                    onClick={toggleMobileMenu}
-                    className="inline-flex h-11 items-center justify-center bg-[#ff7a3d] text-[13px] font-semibold text-white transition-colors hover:bg-white hover:text-black"
-                  >
-                    S&apos;inscrire
-                  </Link>
-                </div>
+                </>
               )}
             </div>
           </div>
