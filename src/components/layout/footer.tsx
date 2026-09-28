@@ -54,7 +54,7 @@ const columns = [
 ];
 
 const contacts = [
-  { icon: MapPin, label: 'Yaounde, Carrefour Nkomayos', href: 'https://maps.google.com/?q=Carrefour+Nkomayos+Yaounde' },
+  { icon: MapPin, label: 'Yaounde, Carrefour Nomayos', href: 'https://maps.google.com/?q=Carrefour+Nomayos+Yaounde' },
   { icon: Phone, label: '+237 6 56 16 40 60', href: 'tel:+237656164060' },
   { icon: Mail, label: 'cipresaconsulting@gmail.com', href: 'mailto:cipresaconsulting@gmail.com' },
   { icon: Globe, label: 'cipresaconsulting.com', href: 'https://cipresaconsulting.com' },

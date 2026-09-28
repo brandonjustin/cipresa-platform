@@ -14,7 +14,7 @@ export const courseCategories: CourseCategory[] = [
 
 export const instructors: Instructor[] = [
   {
-    id: '1', userId: '1', fullName: 'Evariste Tchinda', avatar: '/images/instructors/evariste.jpg',
+    id: '1', userId: '1', fullName: 'Kana Evariste', avatar: '/images/instructors/evariste.jpg',
     title: 'Expert en Agronomie & Formateur Principal', bio: 'Plus de 15 ans d\'expérience dans le conseil agricole et la formation des agriculteurs à travers le Cameroun.',
     expertise: ['Agronomie', 'Gestion de Projet', 'Culture Maraîchère', 'Élevage'],
     totalCourses: 15, totalStudents: 1250, totalReviews: 89, rating: 4.8, socialLinks: {},
@@ -197,7 +197,7 @@ export const testimonials: Testimonial[] = [
 ];
 
 export const teamMembers: TeamMember[] = [
-  { id: '1', name: 'Evariste Tchinda', role: 'Fondateur & Directeur', avatar: '/images/team/evariste.jpg', bio: 'Expert agronome avec plus de 15 ans d\'expérience dans le développement agricole africain.', socialLinks: {} },
+  { id: '1', name: 'Kana Evariste', role: 'Fondateur & Directeur', avatar: '/images/team/evariste.jpg', bio: 'Expert agronome avec plus de 15 ans d\'expérience dans le développement agricole africain.', socialLinks: {} },
   { id: '2', name: 'Marie Ngo Bissa', role: 'Directrice des Formations', avatar: '/images/team/marie.jpg', bio: 'Spécialiste en pédagogie agricole et développement des compétences.', socialLinks: {} },
   { id: '3', name: 'Dr. Thomas Mvogo', role: 'Conseiller Technique', avatar: '/images/team/thomas.jpg', bio: 'Docteur en agronomie, expert en cultures pérennes et systèmes agroforestiers.', socialLinks: {} },
   // TODO: placeholders — replace name, role, bio and avatar (e.g. '/images/team/<prenom>.jpg') with the real team members.
@@ -253,7 +253,7 @@ Jean-Pierre Mbarga, agriculteur à Mbankomo, témoigne : "Depuis que j'ai adopt�
 
 CIPRESA vous accompagne à chaque étape avec ses formations complètes et ses produits de qualité adaptés au contexte africain.`,
     image: '/images/blog/rendements.jpg', category: 'Techniques agricoles',
-    author: 'Evariste Tchinda', tags: ['rendement', 'technique', 'moderne'],
+    author: 'Kana Evariste', tags: ['rendement', 'technique', 'moderne'],
     publishedAt: '2024-03-15', readTime: '5 min', featured: true, isPublished: true,
   },
   {
