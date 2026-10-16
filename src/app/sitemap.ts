@@ -6,7 +6,7 @@ import { getPublishedBlogPosts } from '@/lib/data/blog';
 import { getPublishedLearningPaths } from '@/lib/data/learning-paths';
 
 const STATIC_ROUTES = [
-  '', 'about', 'services', 'contact', 'courses', 'marketplace', 'encyclopedia',
+  '', 'about', 'fondateur', 'partenaires', 'jouna', 'services', 'contact', 'courses', 'marketplace', 'encyclopedia',
   'blog', 'paths', 'events', 'faq', 'instructors', 'careers',
 ];
 

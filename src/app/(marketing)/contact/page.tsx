@@ -21,7 +21,7 @@ const heroTile = {
 const contactInfo = [
   { icon: Phone, label: 'Téléphone', value: '+237 656 164 060', href: 'tel:+237656164060' },
   { icon: Mail, label: 'Email', value: 'cipresaconsulting@gmail.com', href: 'mailto:cipresaconsulting@gmail.com' },
-  { icon: MapPin, label: 'Adresse', value: 'Yaoundé, Cameroun' },
+  { icon: MapPin, label: 'Adresse', value: 'Carrefour Nomayos, Yaoundé, Cameroun' },
   { icon: Clock, label: 'Horaires', value: 'Lun - Ven: 8h00 - 18h00' },
 ];
 
@@ -219,7 +219,7 @@ export default function ContactPage() {
                   <Clock className="h-4 w-4" />
                 </span>
                 <p className="mt-6 text-[16px] font-bold leading-tight text-black">Lun - Ven : 8h00 - 18h00</p>
-                <p className="mt-1.5 text-[12px] font-medium text-black/60">Yaoundé, Cameroun</p>
+                <p className="mt-1.5 text-[12px] font-medium text-black/60">Carrefour Nomayos, Yaoundé</p>
               </motion.div>
             </motion.div>
           </motion.div>

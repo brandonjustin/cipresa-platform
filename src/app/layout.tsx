@@ -3,7 +3,33 @@ import localFont from 'next/font/local';
 import { cn } from '@/lib/utils/cn';
 import { Providers } from '@/components/providers';
 import { ShellContent } from '@/components/layout/shell-content';
+import { JsonLd } from '@/components/seo/json-ld';
+import { company } from '@/lib/utils/company';
 import './globals.css';
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'CIPRESA Consulting',
+  legalName: company.name,
+  description: company.tagline,
+  url: siteUrl,
+  logo: `${siteUrl}/images/logo.png`,
+  foundingDate: company.founded,
+  founder: { '@type': 'Person', name: 'Kana Evariste', url: `${siteUrl}/fondateur` },
+  email: company.email,
+  telephone: '+237656164060',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Carrefour Nomayos',
+    addressLocality: 'Yaoundé',
+    addressCountry: 'CM',
+  },
+  areaServed: ['Afrique centrale', 'Afrique de l’Ouest'],
+  numberOfEmployees: { '@type': 'QuantitativeValue', value: 120 },
+};
 
 const poppins = localFont({
   src: [
@@ -23,8 +49,9 @@ export const metadata: Metadata = {
     default: 'CIPRESA Consulting - Agriculture au Cameroun et en Afrique',
     template: '%s | CIPRESA Consulting',
   },
-  description: 'Leader agricole camerounais proposant des formations en ligne, semences, matériel agricole, projets, irrigation et maintenance pour réussir dans l\'agriculture et l\'élevage en Afrique.',
-  keywords: ['agriculture', 'Cameroun', 'formation agricole', 'semences', 'matériel agricole', 'CIPRESA', 'Afrique', 'agri-tech', 'e-learning'],
+  description: 'Entreprise agricole intégrée : conseil, ingénierie de projets, irrigation, plants et pépinières, mécanisation, logistique, formation (CIPRESA Academy) et solutions digitales, dans 9 pays d\'Afrique centrale et de l\'Ouest.',
+  keywords: ['CIPRESA Consulting SARL', 'Green Capital Club', 'CIPRESA IA', 'investissement agricole', 'Afrique centrale',
+'agriculture', 'Cameroun', 'formation agricole', 'semences', 'matériel agricole', 'CIPRESA', 'Afrique', 'agri-tech', 'e-learning', 'Kana Evariste', 'pépinière', 'arbres fruitiers', 'irrigation', 'CIPRESA Academy'],
   authors: [{ name: 'CIPRESA Consulting' }],
   creator: 'CIPRESA Consulting',
   openGraph: {
@@ -58,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <JsonLd data={organizationJsonLd} />
         <script
           dangerouslySetInnerHTML={{
             __html: `

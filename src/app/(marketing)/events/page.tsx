@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, MapPin, Users, ExternalLink, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -17,6 +18,7 @@ const eventTypeColors: Record<string, 'info' | 'success' | 'warning' | 'error'> 
 };
 
 export default function EventsPage() {
+  const today = new Date().toISOString().slice(0, 10);
   return (
     <PageTransition>
       <div className="pt-20">
@@ -30,15 +32,25 @@ export default function EventsPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event) => (
+            {events.map((event) => {
+              const isPast = event.date < today;
+              return (
               <StaggerItem key={event.id}>
                 <Card className="h-full flex flex-col">
-                  <div className="relative h-48 bg-gradient-to-br from-cipresa-100 to-cipresa-50 dark:from-cipresa-950 dark:to-gray-900 flex items-center justify-center">
-                    <Calendar className="w-16 h-16 text-cipresa-300 dark:text-cipresa-700" />
+                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-cipresa-100 to-cipresa-50 dark:from-cipresa-950 dark:to-gray-900 flex items-center justify-center">
+                    {event.image ? (
+                      <Image src={event.image} alt="" fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className={`object-cover ${isPast ? 'grayscale-[40%]' : ''}`} />
+                    ) : (
+                      <Calendar className="w-16 h-16 text-cipresa-300 dark:text-cipresa-700" />
+                    )}
                     <Badge variant={eventTypeColors[event.type]} size="sm" className="absolute top-3 left-3">
                       {event.type === 'workshop' ? 'Atelier' : event.type === 'webinar' ? 'Webinaire' : event.type === 'conference' ? 'Conférence' : 'Formation'}
                     </Badge>
-                    {event.price === 0 && <Badge variant="success" size="sm" className="absolute top-3 right-3">Gratuit</Badge>}
+                    {isPast ? (
+                      <Badge variant="default" size="sm" className="absolute top-3 right-3">Terminé</Badge>
+                    ) : (
+                      event.price === 0 && <Badge variant="success" size="sm" className="absolute top-3 right-3">Gratuit</Badge>
+                    )}
                   </div>
                   <CardContent className="flex-1 flex flex-col">
                     <h3 className="font-semibold text-gray-900 dark:text-white mb-3">{event.title}</h3>
@@ -49,13 +61,22 @@ export default function EventsPage() {
                       <div className="flex items-center gap-2"><MapPin className="w-4 h-4" /> {event.location}</div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-cipresa-600">{event.price === 0 ? 'Gratuit' : formatCurrency(event.price ?? 0)}</span>
-                      <Button size="sm" icon={ExternalLink} iconPosition="right">S'inscrire</Button>
+                      <span className="font-bold text-cipresa-600">
+                        {isPast ? 'Événement passé' : event.price === undefined ? '' : event.price === 0 ? 'Gratuit' : formatCurrency(event.price)}
+                      </span>
+                      {event.registrationLink ? (
+                        <Link href={event.registrationLink}>
+                          <Button size="sm" icon={isPast ? ChevronRight : ExternalLink} iconPosition="right">{isPast ? 'Voir le bilan' : "S'inscrire"}</Button>
+                        </Link>
+                      ) : (
+                        !isPast && <Button size="sm" icon={ExternalLink} iconPosition="right">S&apos;inscrire</Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
               </StaggerItem>
-            ))}
+              );
+            })}
           </StaggerContainer>
         </div>
       </div>

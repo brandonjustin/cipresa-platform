@@ -7,10 +7,11 @@ import { motion, useInView } from 'framer-motion';
 import {
   GraduationCap, Store, Tractor, Globe,
   Users, Sprout, Droplets, Hammer, Shield, TrendingUp,
-  Leaf, ArrowUpRight, Clock, Package, Handshake
+  Leaf, ArrowUpRight, Package, Handshake, Truck, Cpu, Factory
 } from 'lucide-react';
 import { PageTransition } from '@/components/animations/motion-components';
 import { stats } from '@/lib/utils/data';
+import { activities, valueChain } from '@/lib/utils/company';
 
 const heroItem = {
   hidden: { opacity: 0, y: 18 },
@@ -22,7 +23,7 @@ const heroTile = {
   visible: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 80, damping: 20 } },
 };
 
-const statIcons = [Clock, GraduationCap, Package, Handshake];
+const statIcons = [Handshake, GraduationCap, Sprout, Globe];
 
 /** Counts from 0 to `value` once the number scrolls into view. */
 function StatCounter({ value, suffix }: { value: number; suffix: string }) {
@@ -46,44 +47,25 @@ function StatCounter({ value, suffix }: { value: number; suffix: string }) {
   return <span ref={ref}>{display.toLocaleString('fr-FR')}{suffix}</span>;
 }
 
-const pillars = [
-  {
-    icon: GraduationCap,
-    title: 'Formation & Conseil',
-    description: 'Plus de 360h de formations en ligne avec des experts. Conseil et accompagnement personnalisé pour vos projets agricoles.',
-    details: ['Cours en ligne', 'Accompagnement terrain', 'Certification', 'Mentorat individuel'],
-    href: '/courses',
-  },
-  {
-    icon: Store,
-    title: 'Semences & Intrants',
-    description: 'Semences certifiées, plants de qualité et intrants agricoles adaptés au climat africain pour des rendements optimaux.',
-    details: ['Semences hybrides', 'Plants fruitiers', 'Engrais bio', 'Produits phytosanitaires'],
-    href: '/marketplace',
-  },
-  {
-    icon: Tractor,
-    title: 'Équipement & Services',
-    description: 'Outils agricoles, systèmes d\'irrigation et services de maintenance pour moderniser votre exploitation.',
-    details: ['Outillage professionnel', 'Irrigation goutte-à-goutte', 'Maintenance', 'Installation'],
-    href: '/marketplace',
-  },
-  {
-    icon: Globe,
-    title: 'Projets & Expertise',
-    description: 'De la conception à la réalisation de projets agricoles clé en main en Afrique, avec un suivi expert.',
-    details: ['Études de faisabilité', 'Projets clé en main', 'Suivi-évaluation', 'Consulting'],
-    href: '/about',
-  },
-];
+// The eight official CIPRESA business lines, in the order of the 2027–2031 presentation.
+const activityIcons = [Handshake, Droplets, Sprout, Tractor, GraduationCap, Truck, Cpu, Factory];
 
-const process = [
-  { step: '01', title: 'Diagnostic', desc: 'Analyse de vos besoins et de votre exploitation agricole', icon: Leaf },
-  { step: '02', title: 'Conseil', desc: 'Recommandations personnalisées adaptées à votre contexte', icon: Users },
-  { step: '03', title: 'Formation', desc: 'Montée en compétences via nos formations expertes', icon: GraduationCap },
-  { step: '04', title: 'Équipement', desc: 'Fourniture des intrants et équipements nécessaires', icon: Droplets },
-  { step: '05', title: 'Suivi', desc: 'Accompagnement continu pour garantir votre réussite', icon: TrendingUp },
-];
+const pillars = activities.map((a, i) => ({
+  icon: activityIcons[i],
+  title: a.title,
+  description: a.text,
+  details: a.details,
+  href: a.href,
+}));
+
+const processIcons = [Leaf, Users, Droplets, Package, Store, TrendingUp];
+
+const process = valueChain.map((v, i) => ({
+  step: String(i + 1).padStart(2, '0'),
+  title: v.title,
+  desc: v.text,
+  icon: processIcons[i],
+}));
 
 const engagement = [
   { icon: Shield, title: 'Qualité garantie', desc: 'Tous nos produits et formations sont certifiés et validés par nos experts agronomes.' },
@@ -115,14 +97,14 @@ export default function ServicesPage() {
                   variants={heroItem}
                   className="mt-6 font-display text-[36px] font-medium leading-[0.95] text-black sm:text-[50px] lg:text-[64px]"
                 >
-                  Solutions complètes
-                  <span className="block">pour l&apos;agriculture africaine</span>
+                  Huit métiers,
+                  <span className="block">une seule chaîne de valeur</span>
                 </motion.h1>
               </div>
 
               <motion.div variants={heroItem} className="max-w-[420px]">
                 <p className="text-[15px] font-medium leading-[1.55] text-black">
-                  De la formation à la mise en marché, nous accompagnons les agriculteurs à chaque étape de leur développement.
+                  Conseil, irrigation, plants, mécanisation, formation, logistique, digital et agro-industrie : des métiers habituellement dispersés entre plusieurs prestataires, réunis sous une même architecture.
                 </p>
                 <div className="mt-7 flex flex-wrap items-center gap-5">
                   <Link
@@ -154,7 +136,7 @@ export default function ServicesPage() {
                 />
                 <p className="relative text-[42px] font-black leading-none">{pillars.length}</p>
                 <p className="relative mt-1 max-w-[220px] text-[14px] font-medium leading-tight">
-                  Piliers : formation, intrants, equipement et projets
+                  Métiers complémentaires, du conseil à l&apos;agro-industrie
                 </p>
                 <Leaf className="absolute right-[30%] top-10 h-5 w-5 fill-white text-white" />
               </motion.div>
@@ -163,7 +145,7 @@ export default function ServicesPage() {
                 <p className="text-[34px] font-black leading-none text-black">{process.length}</p>
                 <div className="my-5 h-px bg-gray-200" />
                 <p className="max-w-[230px] text-[12px] font-medium leading-tight text-black">
-                  Etapes d&apos;accompagnement, du diagnostic jusqu&apos;au suivi
+                  Étapes : diagnostiquer, concevoir, équiper, approvisionner, exécuter, piloter
                 </p>
               </motion.div>
 
@@ -174,7 +156,7 @@ export default function ServicesPage() {
                   </p>
                   <div className="flex items-end justify-between gap-5">
                     <p className="max-w-[210px] text-[12px] font-medium leading-tight text-black transition-colors duration-500 group-hover:text-white/80">
-                      De la formation a la mise en marche de vos produits
+                      Du diagnostic au suivi des performances de votre exploitation
                     </p>
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#ff7a3d] text-white transition-transform duration-500 group-hover:rotate-45">
                       <ArrowUpRight className="h-4 w-4" />
@@ -196,11 +178,11 @@ export default function ServicesPage() {
               className="grid gap-8 border-t border-black pt-10 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16"
             >
               <motion.h2 variants={heroItem} className="font-display text-[28px] font-medium leading-[0.95] text-black sm:text-[38px] lg:text-[46px]">
-                Quatre piliers
-                <span className="block">pour un accompagnement complet</span>
+                Nos huit métiers
+                <span className="block">complémentaires</span>
               </motion.h2>
               <motion.p variants={heroItem} className="max-w-[420px] text-[15px] font-medium leading-[1.55] text-black">
-                Choisissez le pilier qui correspond a votre besoin, ou combinez-les pour avancer plus vite.
+                L&apos;intégration réduit les ruptures entre conception, mise en œuvre, approvisionnement, formation et suivi. Choisissez un métier ou combinez-les.
               </motion.p>
             </motion.div>
 
@@ -270,11 +252,11 @@ export default function ServicesPage() {
               className="grid gap-8 border-t border-black pt-10 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16"
             >
               <motion.h2 variants={heroItem} className="font-display text-[28px] font-medium leading-[0.95] text-black sm:text-[38px] lg:text-[46px]">
-                Notre approche
-                <span className="block">en {process.length} etapes</span>
+                Chaîne de valeur
+                <span className="block">en {process.length} étapes</span>
               </motion.h2>
               <motion.p variants={heroItem} className="max-w-[420px] text-[15px] font-medium leading-[1.55] text-black">
-                Un processus en {process.length} étapes pour garantir votre réussite agricole.
+                Un même interlocuteur de l&apos;étude jusqu&apos;au pilotage, pour une exécution cohérente et mesurable.
               </motion.p>
             </motion.div>
 
@@ -290,7 +272,7 @@ export default function ServicesPage() {
                   transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                   style={{ transformOrigin: 'left' }}
                 />
-                <div className="absolute inset-0 grid grid-cols-5">
+                <div className="absolute inset-0 grid grid-cols-6">
                   {process.map((item, i) => (
                     <motion.span
                       key={item.step}
@@ -309,7 +291,7 @@ export default function ServicesPage() {
                 whileInView="visible"
                 viewport={{ once: true, margin: '-80px' }}
                 variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
-                className="grid gap-px overflow-hidden bg-gray-200 shadow-[0_18px_50px_rgba(0,0,0,0.05)] ring-1 ring-gray-200 sm:grid-cols-2 lg:grid-cols-5"
+                className="grid gap-px overflow-hidden bg-gray-200 shadow-[0_18px_50px_rgba(0,0,0,0.05)] ring-1 ring-gray-200 sm:grid-cols-2 lg:grid-cols-6"
               >
                 {process.map((item) => (
                   <motion.div
@@ -476,7 +458,7 @@ export default function ServicesPage() {
                       <Icon className="h-4 w-4 stroke-[1.8]" />
                     </span>
                     <div className="relative mt-auto pt-10">
-                      <p className="text-[36px] font-black leading-none sm:text-[42px]">
+                      <p className="text-[26px] font-black leading-none sm:text-[36px] lg:text-[42px]">
                         <StatCounter value={stat.value} suffix={stat.suffix} />
                       </p>
                       <p className={`mt-2 text-[13px] font-medium leading-tight ${featured ? 'text-white/90' : 'text-black/70'}`}>{stat.label}</p>

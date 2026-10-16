@@ -1,32 +1,48 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Leaf, Target, Eye, Heart, ArrowUpRight, MapPin, CalendarDays, GraduationCap, Package, Clock } from 'lucide-react';
+import { Leaf, Target, Eye, Heart, ArrowUpRight, MapPin, Sprout, Users, Globe2, Lightbulb, Quote } from 'lucide-react';
 import { PageTransition, AnimatedSection, StaggerContainer, StaggerItem } from '@/components/animations/motion-components';
 import { teamMembers } from '@/lib/utils/data';
+import { founder } from '@/lib/utils/founder';
+import { company, strategy, companyValues, platforms, entities, leadership, directions, workforce } from '@/lib/utils/company';
 
 const storyStats = [
-  { value: '10+', label: 'Années d\'expertise', icon: CalendarDays },
-  { value: '2500+', label: 'Étudiants formés', icon: GraduationCap },
-  { value: '85+', label: 'Produits disponibles', icon: Package },
-  { value: '360h+', label: 'Formations', icon: Clock },
+  { value: '145', label: 'Projets réalisés', icon: Lightbulb },
+  { value: '4,2 M', label: 'Plants vendus', icon: Sprout },
+  { value: '11 000', label: 'Agriculteurs formés', icon: Users },
+  { value: '9', label: 'Pays couverts en Afrique', icon: Globe2 },
+];
+
+const companyFacts: [string, string][] = [
+  ['Dénomination', company.name],
+  ['Statut', company.status],
+  ['Création', `${company.founded} — SARL depuis ${company.sarlSince}`],
+  ['Siège social', company.legalSeat],
+  ['Base opérationnelle', company.address],
+  ['RCCM', company.rccm],
+  ['NUI', company.nui],
+  ['Zones d’intervention', `${company.zones} — ${company.countries} pays`],
+  ['Capital humain', 'Environ 120 collaborateurs'],
+  ['Ressources végétales', `${company.species} espèces disponibles en pépinière`],
+  ['Capital social', company.capital],
 ];
 
 const missionItems: { icon: typeof Target; title: string; desc: string; values?: string[] }[] = [
   {
     icon: Target,
     title: 'Notre mission',
-    desc: 'Former et équiper les agriculteurs africains avec des solutions agricoles modernes, durables et rentables pour assurer la sécurité alimentaire du continent.',
+    desc: strategy[0].text,
   },
   {
     icon: Eye,
-    title: 'Notre vision',
-    desc: "Devenir le leader africain de l'agri-tech éducative en créant un écosystème où chaque agriculteur a accès aux connaissances et aux ressources nécessaires pour prospérer.",
+    title: 'Notre vision 2031',
+    desc: strategy[1].text,
   },
   {
     icon: Heart,
     title: 'Nos valeurs',
-    desc: 'Excellence, intégrité, innovation, durabilité et impact communautaire sont au cœur de chacune de nos actions.',
-    values: ['Excellence', 'Intégrité', 'Innovation', 'Durabilité', 'Impact communautaire'],
+    desc: 'Six valeurs guident chacune de nos missions, du diagnostic jusqu\'au suivi des performances.',
+    values: companyValues,
   },
 ];
 
@@ -82,18 +98,18 @@ export default function AboutPage() {
                   style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,.62) 1px, transparent 1.5px)', backgroundSize: '12px 12px' }}
                 />
                 <MapPin className="relative h-5 w-5" />
-                <p className="relative mt-5 text-[26px] font-black leading-none">Yaoundé</p>
-                <p className="relative mt-1.5 max-w-[240px] text-[14px] font-medium leading-tight">
-                  Basés au Cameroun, au service de toute l&apos;Afrique
+                <p className="relative mt-5 text-[26px] font-black leading-none">{company.countries} pays</p>
+                <p className="relative mt-1.5 max-w-[260px] text-[14px] font-medium leading-tight">
+                  En {company.zones}, depuis Yaoundé, Carrefour Nomayos
                 </p>
                 <Leaf className="absolute right-[30%] top-10 h-5 w-5 fill-white text-white" />
               </StaggerItem>
 
               <StaggerItem className="border-t border-gray-200 px-7 py-7 md:border-l md:border-t-0 lg:px-8">
-                <p className="text-[34px] font-black leading-none text-black">4</p>
+                <p className="text-[34px] font-black leading-none text-black">120+</p>
                 <div className="my-5 h-px bg-gray-200" />
                 <p className="max-w-[240px] text-[12px] font-medium leading-tight text-black">
-                  Metiers : conseil, formation, intrants et projets agricoles
+                  Collaborateurs, dont 11+ ingénieurs et 19 techniciens spécialisés
                 </p>
               </StaggerItem>
 
@@ -126,13 +142,13 @@ export default function AboutPage() {
                 </h2>
                 <div className="mt-8 max-w-[600px] space-y-5">
                   <p className="text-[18px] font-medium leading-[1.6] text-black">
-                    CIPRESA Consulting est né de la vision de transformer l&apos;agriculture africaine en combinant expertise locale, technologies modernes et formation de qualité.
+                    CIPRESA Consulting SARL, Cabinet International de Prestation de Services Agricoles, est né d&apos;une conviction : l&apos;agriculture africaine ne manque ni de terre, ni de talents, ni de marchés ; elle a besoin de méthode, de technique et de gestion.
                   </p>
                   <p className="text-[15px] font-medium leading-[1.7] text-black/70">
-                    Basé à Yaoundé, Cameroun, nous sommes devenus une référence dans le conseil agricole, la fourniture d&apos;intrants de qualité et la formation des agriculteurs à travers toute l&apos;Afrique.
+                    Créé en {company.founded} par Kana Evariste, ingénieur agronome passé d&apos;un quart d&apos;hectare à Bafou à trois hectares à Mbalmayo, le cabinet est devenu SARL en {company.sarlSince}. Il a depuis réalisé 145 projets et plus de 870 hectares, et réunit environ 120 collaborateurs dans {company.countries} pays d&apos;{company.zones}.
                   </p>
                   <p className="text-[15px] font-medium leading-[1.7] text-black/70">
-                    Notre équipe d&apos;experts agronomes et de formateurs passionnés travaille chaque jour pour offrir aux agriculteurs les outils et les connaissances nécessaires pour réussir.
+                    {company.positioning}
                   </p>
                 </div>
               </AnimatedSection>
@@ -250,6 +266,192 @@ export default function AboutPage() {
                 );
               })}
             </StaggerContainer>
+          </div>
+        </section>
+
+        <section className="bg-black text-white">
+          <div className="mx-auto max-w-[1520px] px-6 py-20 sm:px-10 lg:px-14 lg:py-24">
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center lg:gap-16">
+              <AnimatedSection direction="left">
+                <div className="relative flex aspect-[4/5] max-w-[420px] items-start overflow-hidden bg-[#ff7a3d] p-8">
+                  {founder.portrait ? (
+                    <Image src={founder.portrait} alt={`Portrait de ${founder.name}`} fill sizes="(min-width: 1024px) 30vw, 100vw" className="object-cover object-top" />
+                  ) : (
+                    <span aria-hidden="true" className="font-display text-[120px] font-medium leading-none text-white/90">{founder.initials}</span>
+                  )}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -bottom-24 -right-12 h-[260px] w-[260px] rounded-full border border-white/35 opacity-70"
+                    style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,.62) 1px, transparent 1.5px)', backgroundSize: '12px 12px' }}
+                  />
+                </div>
+              </AnimatedSection>
+              <AnimatedSection direction="right">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#ff7a3d]">Le fondateur</p>
+                <h2 className="mt-4 font-display text-[32px] font-medium leading-[0.95] sm:text-[44px] lg:text-[54px]">{founder.name}</h2>
+                <p className="mt-3 text-[14px] font-semibold text-white/70">{founder.role} • PCA de SOCAPRA</p>
+                <Quote className="mt-8 h-6 w-6 text-[#ff7a3d]" />
+                <p className="mt-3 max-w-[640px] font-display text-[22px] font-medium leading-[1.2] sm:text-[28px]">« {founder.quote} »</p>
+                <p className="mt-6 max-w-[620px] text-[15px] font-medium leading-[1.7] text-white/70">{founder.summary}</p>
+                <Link
+                  href="/fondateur"
+                  className="group mt-8 inline-flex h-[42px] items-center justify-center gap-2 bg-[#ff7a3d] px-7 text-[13px] font-semibold text-white transition-colors hover:bg-[#e8662b]"
+                >
+                  Lire sa biographie
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
+                </Link>
+              </AnimatedSection>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white">
+          <div className="mx-auto max-w-[1520px] px-6 py-20 sm:px-10 lg:px-14 lg:py-24">
+            <StaggerContainer className="grid gap-8 border-t border-black pt-10 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16">
+              <StaggerItem>
+                <h2 className="font-display text-[28px] font-medium leading-[0.95] text-black sm:text-[38px] lg:text-[46px]">
+                  Gouvernance
+                  <span className="block">& organisation</span>
+                </h2>
+              </StaggerItem>
+              <StaggerItem className="max-w-[420px]">
+                <p className="text-[15px] font-medium leading-[1.55] text-black">
+                  Une direction stratégique, une direction générale et technique, et cinq directions opérationnelles.
+                </p>
+              </StaggerItem>
+            </StaggerContainer>
+
+            <StaggerContainer delay={0.1} className="mt-14 grid gap-5 md:grid-cols-2">
+              {leadership.map((l, i) => {
+                const body = (
+                  <>
+                    <p className={`text-[12px] font-semibold uppercase tracking-[0.14em] ${i === 0 ? 'text-white/85' : 'text-[#ff7a3d]'}`}>{l.role}</p>
+                    <h3 className="mt-4 text-[24px] font-semibold leading-tight">{l.name}</h3>
+                    <p className={`mt-3 max-w-[520px] text-[14px] font-medium leading-[1.6] ${i === 0 ? 'text-white/90' : 'text-black/70'}`}>{l.text}</p>
+                    {l.href && (
+                      <span className="mt-6 inline-flex items-center gap-1.5 text-[13px] font-semibold">
+                        Sa biographie <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
+                      </span>
+                    )}
+                  </>
+                );
+                const cls = `group relative block h-full overflow-hidden px-7 py-8 lg:px-9 ${i === 0 ? 'bg-[#ff7a3d] text-white' : 'bg-[#f6f5f2] text-black ring-1 ring-gray-200'}`;
+                return (
+                  <StaggerItem key={l.name} className="h-full">
+                    {l.href ? <Link href={l.href} className={cls}>{body}</Link> : <div className={cls}>{body}</div>}
+                  </StaggerItem>
+                );
+              })}
+            </StaggerContainer>
+
+            <StaggerContainer delay={0.1} className="mt-5 grid gap-px overflow-hidden bg-gray-200 ring-1 ring-gray-200 sm:grid-cols-2 lg:grid-cols-5">
+              {directions.map((d) => (
+                <StaggerItem key={d.name} className="bg-white px-6 py-6">
+                  <p className="text-[11px] font-semibold text-black/50">Direction</p>
+                  <h3 className="mt-1 text-[16px] font-semibold leading-tight text-black">{d.name}</h3>
+                  <p className="mt-2 text-[12px] font-medium leading-[1.5] text-black/70">{d.text}</p>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+
+            <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:gap-16">
+              <AnimatedSection direction="left">
+                <h3 className="text-[13px] font-semibold uppercase tracking-[0.16em] text-black/50">Capital humain</h3>
+                <ul className="mt-5 grid grid-cols-2 gap-px overflow-hidden bg-gray-200 ring-1 ring-gray-200 sm:grid-cols-3">
+                  {workforce.map((w) => (
+                    <li key={w.label} className="bg-white px-5 py-5">
+                      <p className="text-[28px] font-black leading-none text-black">{w.value}</p>
+                      <p className="mt-2 text-[12px] font-medium text-black/70">{w.label}</p>
+                    </li>
+                  ))}
+                </ul>
+              </AnimatedSection>
+              <AnimatedSection direction="right">
+                <h3 className="text-[13px] font-semibold uppercase tracking-[0.16em] text-black/50">Fiche signalétique</h3>
+                <dl className="mt-5 divide-y divide-gray-200 bg-white ring-1 ring-gray-200">
+                  {companyFacts.map(([k, v]) => (
+                    <div key={k} className="grid gap-1 px-6 py-3.5 sm:grid-cols-[160px_1fr] sm:gap-6">
+                      <dt className="text-[12px] font-semibold text-[#ff7a3d]">{k}</dt>
+                      <dd className="text-[13px] font-medium leading-snug text-black">{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </AnimatedSection>
+            </div>
+          </div>
+        </section>
+
+        <section id="plateformes" className="scroll-mt-20 bg-[#f6f5f2]">
+          <div className="mx-auto max-w-[1520px] px-6 py-20 sm:px-10 lg:px-14 lg:py-24">
+            <StaggerContainer className="grid gap-8 border-t border-black pt-10 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16">
+              <StaggerItem>
+                <h2 className="font-display text-[28px] font-medium leading-[0.95] text-black sm:text-[38px] lg:text-[46px]">
+                  Les plateformes
+                  <span className="block">et entités CIPRESA</span>
+                </h2>
+              </StaggerItem>
+              <StaggerItem className="max-w-[420px]">
+                <p className="text-[15px] font-medium leading-[1.55] text-black">
+                  Pilotage, intelligence artificielle, finance, média, formation, investissement vert : sept plateformes stratégiques, adossées à quatre entités de terrain.
+                </p>
+              </StaggerItem>
+            </StaggerContainer>
+
+            <StaggerContainer delay={0.1} className="mt-14 grid gap-px overflow-hidden bg-gray-200 shadow-[0_18px_50px_rgba(0,0,0,0.05)] ring-1 ring-gray-200 sm:grid-cols-2 lg:grid-cols-4">
+              {platforms.map((item) => (
+                <StaggerItem key={item.name} className="group relative flex min-h-[210px] flex-col bg-white px-6 py-7">
+                  <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-[#ff7a3d] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
+                  <span className="self-start bg-[#f6f5f2] px-2.5 py-1 text-[11px] font-semibold leading-none text-black">{item.tag}</span>
+                  <h3 className="mt-6 text-[18px] font-semibold leading-tight text-black">{item.name}</h3>
+                  <p className="mt-3 text-[13px] font-medium leading-[1.55] text-black/70">{item.text}</p>
+                </StaggerItem>
+              ))}
+              <StaggerItem className="relative flex min-h-[210px] flex-col justify-between overflow-hidden bg-[#ff7a3d] px-6 py-7 text-white">
+                <MapPin className="h-5 w-5" />
+                <div>
+                  <p className="text-[18px] font-semibold leading-tight">Pépinières CIPRESA</p>
+                  <p className="mt-2 text-[13px] font-medium leading-[1.5] text-white/90">
+                    {company.species} espèces à Yaoundé, Bafoussam et Djombe (Littoral) : avocatiers, manguiers, safoutiers, agrumes, plantain, papayers.
+                  </p>
+                </div>
+              </StaggerItem>
+            </StaggerContainer>
+
+            <StaggerContainer delay={0.1} className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {entities.map((item) => {
+                const body = (
+                  <>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#ff7a3d]">{item.tag}</p>
+                    <h3 className="mt-3 text-[17px] font-semibold leading-tight">{item.name}</h3>
+                    <p className="mt-2 text-[12px] font-medium leading-[1.5] text-white/70">{item.text}</p>
+                    {'href' in item && (
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#ff7a3d]">
+                        Voir le bilan <ArrowUpRight className="h-3.5 w-3.5" />
+                      </span>
+                    )}
+                  </>
+                );
+                return (
+                  <StaggerItem key={item.name} className="h-full">
+                    {'href' in item ? (
+                      <Link href={item.href} className="block h-full bg-black px-6 py-6 text-white transition-colors hover:bg-cipresa-950">{body}</Link>
+                    ) : (
+                      <div className="h-full bg-black px-6 py-6 text-white">{body}</div>
+                    )}
+                  </StaggerItem>
+                );
+              })}
+            </StaggerContainer>
+
+            <AnimatedSection className="mt-10">
+              <Link
+                href="/partenaires"
+                className="group inline-flex h-[42px] items-center justify-center gap-2 bg-black px-7 text-[13px] font-semibold text-white transition-colors hover:bg-cipresa-950"
+              >
+                Plan stratégique 2027–2031
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
+              </Link>
+            </AnimatedSection>
           </div>
         </section>
 

@@ -11,7 +11,7 @@ import {
   Wheat, LeafyGreen, TreePalm, Tractor, ClipboardList,
   Gift, Video, Sprout, FlaskConical, Wrench, Droplets,
   ShoppingBag, Flame, Sparkles,
-  Building2, Briefcase, Mail
+  Building2, Briefcase, Mail, Handshake
 } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 import { useScroll } from '@/lib/hooks/use-scroll';
@@ -41,6 +41,7 @@ const formationsRessources: MegaMenuItem[] = [
   { label: 'Cours gratuits', href: '/courses?price=free', icon: <Gift className="w-4 h-4" /> },
   { label: 'Formateurs', href: '/instructors', icon: <GraduationCap className="w-4 h-4" /> },
   { label: 'Webinaires', href: '/events', icon: <Video className="w-4 h-4" /> },
+  { label: 'JOUNA 2026', href: '/jouna', icon: <Sprout className="w-4 h-4" /> },
 ];
 
 const boutiqueItems: MegaMenuItem[] = [
@@ -58,6 +59,8 @@ const boutiqueServices: MegaMenuItem[] = [
 
 const entrepriseItems: MegaMenuItem[] = [
   { label: 'A propos', href: '/about', icon: <Building2 className="w-4 h-4" /> },
+  { label: 'Le fondateur', href: '/fondateur', icon: <User className="w-4 h-4" /> },
+  { label: 'Partenaires & vision 2031', href: '/partenaires', icon: <Handshake className="w-4 h-4" /> },
   { label: 'Carrieres', href: '/careers', icon: <Briefcase className="w-4 h-4" /> },
   { label: 'Contact', href: '/contact', icon: <Mail className="w-4 h-4" /> },
 ];

@@ -15,8 +15,8 @@ export const courseCategories: CourseCategory[] = [
 export const instructors: Instructor[] = [
   {
     id: '1', userId: '1', fullName: 'Kana Evariste', avatar: '/images/instructors/evariste.jpg',
-    title: 'Expert en Agronomie & Formateur Principal', bio: 'Plus de 15 ans d\'expérience dans le conseil agricole et la formation des agriculteurs à travers le Cameroun.',
-    expertise: ['Agronomie', 'Gestion de Projet', 'Culture Maraîchère', 'Élevage'],
+    title: 'Ingénieur agronome, CEO de CIPRESA & Formateur international', bio: 'Spécialiste en mécanisation agricole et irrigation (FASA, Université de Dschang), il a animé des master classes en Côte d\'Ivoire, au Congo, au Gabon et au Cameroun, et dirige un cabinet de plus de 120 collaborateurs ayant réalisé plus de 870 hectares.',
+    expertise: ['Irrigation', 'Arboriculture fruitière', 'Pépinière & greffage', 'Montage de projets', 'Management agricole'],
     totalCourses: 15, totalStudents: 1250, totalReviews: 89, rating: 4.8, socialLinks: {},
   },
   {
@@ -197,12 +197,12 @@ export const testimonials: Testimonial[] = [
 ];
 
 export const teamMembers: TeamMember[] = [
-  { id: '1', name: 'Kana Evariste', role: 'Fondateur & Directeur', avatar: '/images/team/evariste.jpg', bio: 'Expert agronome avec plus de 15 ans d\'expérience dans le développement agricole africain.', socialLinks: {} },
+  { id: '1', name: 'Kana Evariste', role: 'Promoteur & CEO', avatar: '/images/team/kana-evariste.jpg', bio: 'Ingénieur agronome spécialisé en mécanisation et irrigation, PCA de SOCAPRA et formateur international. Initiateur de CIPRESA IA, de la Journée Nationale de l\'Arbre et du matériel Mata.', socialLinks: {} },
+  { id: '7', name: 'Nganfegue Yves Ludovic', role: 'Directeur Général & Technique', avatar: '', bio: 'Ingénieur agronome, il coordonne l\'exécution technique, les dispositifs de terrain et la performance opérationnelle des projets CIPRESA.', socialLinks: {} },
   { id: '2', name: 'Marie Ngo Bissa', role: 'Directrice des Formations', avatar: '/images/team/marie.jpg', bio: 'Spécialiste en pédagogie agricole et développement des compétences.', socialLinks: {} },
   { id: '3', name: 'Dr. Thomas Mvogo', role: 'Conseiller Technique', avatar: '/images/team/thomas.jpg', bio: 'Docteur en agronomie, expert en cultures pérennes et systèmes agroforestiers.', socialLinks: {} },
   // TODO: placeholders — replace name, role, bio and avatar (e.g. '/images/team/<prenom>.jpg') with the real team members.
-  { id: '4', name: 'Membre de l\'équipe', role: 'Poste à compléter', avatar: '', bio: 'Présentation à compléter.', socialLinks: {} },
-  { id: '5', name: 'Membre de l\'équipe', role: 'Poste à compléter', avatar: '', bio: 'Présentation à compléter.', socialLinks: {} },
+  { id: '4', name: 'Zita Edith Nlate', role: 'Directrice de CIPRESA Academy', avatar: '', bio: 'Ingénieure agronome, elle dirige CIPRESA Academy à Yaoundé : un cursus de six mois pour former la relève aux pépinières, à l\'irrigation et au montage de projets.', socialLinks: {} },
   { id: '6', name: 'Membre de l\'équipe', role: 'Poste à compléter', avatar: '', bio: 'Présentation à compléter.', socialLinks: {} },
 ];
 
@@ -407,6 +407,9 @@ export const faqItems: FAQItem[] = [
 ];
 
 export const events: EventItem[] = [
+  { id: 'academy-2026', title: 'CIPRESA Academy : première rentrée', description: 'Cursus de 6 mois à Yaoundé, hébergement gratuit sur site. Quatre modules : création et gestion de pépinière, systèmes d\'irrigation, mise en place des projets, suivi des projets.', date: '2026-10-19', time: '08:00', location: 'Yaoundé, Cameroun', image: '/images/academy.png', type: 'training', price: 0, registrationLink: '/contact' },
+  { id: 'jna-2026', title: 'JOUNA 2026 : Journée Nationale de l\'Arbre', description: '« Préparer et réussir la campagne agricole 2027 » : 500 agriculteurs, 4 panels, 21 intervenants et 11 stands au Palais des Congrès.', date: '2026-10-03', time: '09:00', location: 'Palais des Congrès, Yaoundé', image: '/images/jouna/photo-de-famille.jpg', type: 'conference', registrationLink: '/jouna' },
+  { id: 'pointe-noire-2026', title: 'Formation : arbres fruitiers et irrigation', description: 'Formation animée par Kana Evariste à la Chambre de Commerce de Pointe-Noire.', date: '2026-09-12', time: '09:00', location: 'Pointe-Noire, Congo', image: '/images/events/training1.jpg', type: 'training', price: 0 },
   { id: '1', title: 'Atelier sur la Culture Maraîchère de Saison', description: 'Atelier pratique de 2 jours sur les techniques de culture maraîchère adaptées à chaque saison.', date: '2024-06-15', time: '09:00', location: 'Yaoundé, Cameroun', image: '/images/events/workshop1.jpg', type: 'workshop', price: 25000 },
   { id: '2', title: 'Webinaire : Financement des Projets Agricoles', description: 'Webinaire gratuit sur les opportunités de financement pour les projets agricoles.', date: '2024-07-01', time: '15:00', location: 'En ligne', image: '/images/events/webinar1.jpg', type: 'webinar', price: 0 },
   { id: '3', title: 'Formation Intensive en Apiculture', description: 'Formation de 3 jours pour maîtriser l\'apiculture moderne.', date: '2024-07-20', time: '08:00', location: 'Bafoussam, Cameroun', image: '/images/events/training1.jpg', type: 'training', price: 35000 },
@@ -437,8 +440,9 @@ export const heroSlides = [
 ];
 
 export const stats = [
-  { label: 'Heures de Formation', value: 360, suffix: '+' },
-  { label: 'Étudiants Formés', value: 2500, suffix: '+' },
-  { label: 'Produits Disponibles', value: 85, suffix: '+' },
-  { label: 'Partenaires', value: 25, suffix: '' },
+  // Source: Présentation officielle CIPRESA 2027–2031 (see src/lib/utils/company.ts)
+  { label: 'Projets réalisés', value: 145, suffix: '' },
+  { label: 'Agriculteurs formés', value: 11000, suffix: '' },
+  { label: 'Plants vendus', value: 4200000, suffix: '' },
+  { label: 'Pays couverts', value: 9, suffix: '' },
 ];

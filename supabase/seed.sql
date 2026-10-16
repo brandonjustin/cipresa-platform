@@ -63,9 +63,9 @@ update profiles set role = 'instructor' where id in ('00000000-0000-0000-0000-00
 insert into instructors (id, user_id, full_name, avatar, title, bio, expertise, total_courses, total_students, total_reviews, rating, is_verified) values
   ('10000000-0000-0000-0000-000000000001', '00000000-0000-0000-0000-00000000a002',
    'Kana Evariste', '/images/instructors/evariste.jpg',
-   'Expert en Agronomie & Formateur Principal',
-   'Plus de 15 ans d''expérience dans le conseil agricole et la formation des agriculteurs à travers le Cameroun.',
-   array['Agronomie', 'Gestion de Projet', 'Culture Maraîchère', 'Élevage'], 15, 1250, 89, 4.8, true),
+   'Ingénieur agronome, CEO de CIPRESA & Formateur international',
+   'Spécialiste en mécanisation agricole et irrigation (FASA, Université de Dschang), il a animé des master classes en Côte d''Ivoire, au Congo, au Gabon et au Cameroun, et dirige un cabinet de plus de 120 collaborateurs ayant réalisé plus de 870 hectares.',
+   array['Irrigation', 'Arboriculture fruitière', 'Pépinière & greffage', 'Montage de projets', 'Management agricole'], 15, 1250, 89, 4.8, true),
   ('10000000-0000-0000-0000-000000000002', '00000000-0000-0000-0000-00000000a003',
    'Marie Ngo Bissa', '/images/instructors/marie.jpg',
    'Spécialiste en Élevage & Production Animale',

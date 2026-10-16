@@ -41,6 +41,7 @@ import { formatCurrency } from '@/lib/utils/format';
 import { useCartStore } from '@/lib/store/cart-store';
 import { useAuthStore } from '@/lib/store/auth-store';
 import { getCurrentUserWishlistedProductIds, toggleWishlistItem } from '@/lib/actions/wishlist';
+import { founder } from '@/lib/utils/founder';
 import type { Course, CourseCategory, Product } from '@/types';
 
 const services = [
@@ -310,9 +311,9 @@ function ServiceCard({ service, index }: { service: (typeof services)[number]; i
 }
 
 const heroStats = [
-  { count: 96, suffix: '%', label: 'Satisfaction' },
-  { count: 2, suffix: 'K+', label: 'Apprenants actifs' },
-  { count: 500, suffix: '+', label: 'Projets suivis' },
+  { count: 870, suffix: ' ha+', label: 'Hectares realises' },
+  { count: 120, suffix: '+', label: 'Collaborateurs' },
+  { count: 9, suffix: ' pays', label: 'Couverts en Afrique' },
 ];
 
 // Fanned "dealt from a deck" photo stack for the hero visual, in the spirit
@@ -895,7 +896,7 @@ export function HomeView({ courses, products, categories, initialWishlistedProdu
               variants={springUp}
               className="mt-8 max-w-[420px] text-[15px] font-medium leading-[1.55] text-black"
             >
-              Plus de 360 heures de formation et des dizaines d intrants selectionnes, avec un accompagnement terrain a chaque etape de votre projet agricole.
+              11 000 agriculteurs deja formes, 42 especes en pepiniere et un accompagnement terrain a chaque etape de votre projet agricole.
             </motion.p>
             <motion.div custom={2} variants={springUp} className="mt-7">
               <Link
@@ -931,8 +932,8 @@ export function HomeView({ courses, products, categories, initialWishlistedProdu
                 className="absolute -bottom-24 right-6 h-[230px] w-[230px] rounded-full border border-white/35 opacity-70"
                 style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,.62) 1px, transparent 1.5px)', backgroundSize: '12px 12px' }}
               />
-              <p className="relative text-[42px] font-black leading-none">360+</p>
-              <p className="relative mt-1 max-w-[185px] text-[14px] font-medium leading-tight">Heures de formation agricole</p>
+              <p className="relative text-[42px] font-black leading-none">11 000</p>
+              <p className="relative mt-1 max-w-[185px] text-[14px] font-medium leading-tight">Agriculteurs formes</p>
               <Leaf className="absolute bottom-9 left-[45%] h-5 w-5 fill-white text-white" />
               <Leaf className="absolute right-[26%] top-14 h-5 w-5 fill-white text-white" />
               <Leaf className="absolute bottom-12 right-[12%] h-4 w-4 fill-white text-white" />
@@ -940,15 +941,12 @@ export function HomeView({ courses, products, categories, initialWishlistedProdu
 
             <motion.div variants={springUp} className="px-7 py-7 lg:px-8">
               <div className="flex items-start justify-between gap-6">
-                <p className="text-[18px] font-semibold leading-none text-black">Accompagnement terrain</p>
-                <div className="flex items-center gap-2">
-                  <p className="text-[34px] font-black leading-none text-black">4.9</p>
-                  <Star className="mt-0.5 h-4 w-4 fill-[#ff7a3d] text-[#ff7a3d]" />
-                </div>
+                <p className="text-[18px] font-semibold leading-none text-black">CIPRESA Academy</p>
+                <p className="text-[34px] font-black leading-none text-black">7</p>
               </div>
               <div className="my-8 h-px bg-gray-200" />
               <div className="flex items-end justify-between gap-5">
-                <p className="max-w-[235px] text-[12px] font-medium leading-tight text-black">Avis verifies des porteurs de projets et apprenants</p>
+                <p className="max-w-[235px] text-[12px] font-medium leading-tight text-black">Master classes deja organisees, et un cursus de 6 mois a Yaounde</p>
                 <Link href="/courses" aria-label="Voir les formations" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#ff7a3d] text-white transition-transform hover:-translate-y-0.5">
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
@@ -961,8 +959,8 @@ export function HomeView({ courses, products, categories, initialWishlistedProdu
                 <div className="absolute right-10 top-14 h-12 w-28 skew-x-[-45deg] bg-black" />
                 <div className="absolute right-20 top-28 h-12 w-28 skew-x-[-45deg] bg-black" />
               </div>
-              <p className="relative text-[34px] font-black leading-none text-black">50K+</p>
-              <p className="relative mt-[70px] max-w-[160px] text-[12px] font-medium leading-tight text-black">Intrants selectionnes pour lancer et soutenir votre projet</p>
+              <p className="relative text-[34px] font-black leading-none text-black">4,2 M</p>
+              <p className="relative mt-[70px] max-w-[160px] text-[12px] font-medium leading-tight text-black">Plants vendus pour lancer et soutenir vos plantations</p>
             </motion.div>
           </motion.div>
         </div>
@@ -1440,27 +1438,24 @@ export function HomeView({ courses, products, categories, initialWishlistedProdu
                     style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,.62) 1px, transparent 1.5px)', backgroundSize: '12px 12px' }}
                   />
                   <p className="relative text-[42px] font-black leading-none">
-                    <CountUp value={92} suffix="%" />
+                    <CountUp value={145} suffix="" />
                   </p>
-                  <p className="relative mt-1 text-[14px] font-medium leading-tight">Taux de reussite</p>
+                  <p className="relative mt-1 text-[14px] font-medium leading-tight">Projets realises</p>
                 </div>
                 <div className="px-7 py-7">
-                  <div className="flex items-center gap-2">
-                    <p className="text-[34px] font-black leading-none text-black">
-                      <CountUp value={96} suffix="%" />
-                    </p>
-                    <Star className="h-4 w-4 fill-[#ff7a3d] text-[#ff7a3d]" />
-                  </div>
+                  <p className="text-[34px] font-black leading-none text-black">
+                    <CountUp value={24} suffix="" />
+                  </p>
                   <div className="my-4 h-1 w-full bg-gray-200">
                     <motion.div
                       className="h-1 bg-[#ff7a3d]"
                       initial={{ width: 0 }}
-                      whileInView={{ width: '96%' }}
+                      whileInView={{ width: '100%' }}
                       viewport={viewport}
                       transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
                     />
                   </div>
-                  <p className="text-[12px] font-medium leading-tight text-black">Satisfaction apprenants</p>
+                  <p className="text-[12px] font-medium leading-tight text-black">Systemes d irrigation installes</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -1490,6 +1485,88 @@ export function HomeView({ courses, products, categories, initialWishlistedProdu
               ))}
             </motion.ul>
           </div>
+        </div>
+      </motion.section>
+
+      <motion.section className="relative overflow-hidden bg-black text-white" initial="hidden" whileInView="visible" viewport={viewport} variants={sectionReveal}>
+        <div className="relative mx-auto grid max-w-[1520px] gap-10 px-6 py-20 sm:px-10 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-16 lg:px-14 lg:py-24">
+          <motion.div
+            variants={springUp}
+            custom={0}
+            className="relative flex h-[180px] w-[180px] items-center justify-center overflow-hidden rounded-full bg-[#ff7a3d] sm:h-[220px] sm:w-[220px]"
+          >
+            {founder.portrait ? (
+              <Image src={founder.portrait} alt={`Portrait de ${founder.name}`} fill sizes="220px" className="object-cover object-top" />
+            ) : (
+              <span aria-hidden="true" className="font-display text-[72px] font-medium leading-none text-white">{founder.initials}</span>
+            )}
+          </motion.div>
+          <motion.div variants={staggerReveal}>
+            <motion.p custom={0} variants={springUp} className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#ff7a3d]">
+              Le mot du fondateur
+            </motion.p>
+            <motion.p custom={1} variants={springUp} className="mt-5 max-w-[900px] font-display text-[26px] font-medium leading-[1.15] sm:text-[36px] lg:text-[44px]">
+              <Quote className="mb-3 h-7 w-7 text-[#ff7a3d]" />
+              {founder.conviction}
+            </motion.p>
+            <motion.div custom={2} variants={springUp} className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-5">
+              <div>
+                <p className="text-[16px] font-semibold">{founder.name}</p>
+                <p className="mt-1 text-[12px] font-medium text-white/60">{founder.role}</p>
+              </div>
+              <Link
+                href="/fondateur"
+                className="group inline-flex h-[42px] items-center justify-center gap-2 bg-[#ff7a3d] px-7 text-[13px] font-semibold text-white transition-colors hover:bg-[#e8662b]"
+              >
+                Decouvrir son parcours
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
+              </Link>
+              <Link
+                href="/partenaires"
+                className="text-[13px] font-semibold text-white underline-offset-4 transition-colors hover:text-[#ff7a3d] hover:underline"
+              >
+                Vision CIPRESA 2027–2031
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      <motion.section className="relative overflow-hidden bg-white" initial="hidden" whileInView="visible" viewport={viewport} variants={sectionReveal}>
+        <div className="relative mx-auto grid max-w-[1520px] gap-10 px-6 py-20 sm:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16 lg:px-14 lg:py-24">
+          <motion.div variants={springUp} custom={0} className="relative aspect-[654/337] overflow-hidden bg-black">
+            <Image src="/images/jouna/photo-de-famille.jpg" alt="Photo de famille de la JOUNA 2026 au Palais des Congres de Yaounde" fill sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" />
+            <span className="absolute left-5 top-5 bg-[#ff7a3d] px-3 py-1.5 text-[12px] font-semibold leading-none text-white">3 octobre 2026</span>
+          </motion.div>
+          <motion.div variants={staggerReveal}>
+            <motion.p custom={0} variants={springUp} className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#ff7a3d]">
+              Journee Nationale de l&apos;Arbre
+            </motion.p>
+            <motion.h2 custom={1} variants={springUp} className="mt-4 font-display text-[28px] font-medium leading-[0.98] text-black sm:text-[38px] lg:text-[46px]">
+              JOUNA 2026 :
+              <span className="block">500 agriculteurs mobilises</span>
+            </motion.h2>
+            <motion.p custom={2} variants={springUp} className="mt-5 max-w-[480px] text-[15px] font-medium leading-[1.55] text-black/70">
+              Au Palais des Congres de Yaounde, pour preparer et reussir la campagne agricole 2027 : 4 panels, 21 intervenants, 11 stands et des partenaires financiers.
+            </motion.p>
+            <motion.div custom={3} variants={springUp} className="mt-8 grid max-w-[480px] grid-cols-3 gap-px overflow-hidden bg-gray-200 ring-1 ring-gray-200">
+              {[['50+', 'Echanges B2B'], ['20+', 'Projets preselectionnes'], ['10', 'Projets vers le financement']].map(([v, l]) => (
+                <div key={l} className="bg-white px-4 py-4">
+                  <p className="text-[24px] font-black leading-none text-black">{v}</p>
+                  <p className="mt-2 text-[11px] font-medium leading-tight text-black/60">{l}</p>
+                </div>
+              ))}
+            </motion.div>
+            <motion.div custom={4} variants={springUp} className="mt-8">
+              <Link
+                href="/jouna"
+                className="group inline-flex h-[42px] items-center justify-center gap-2 bg-black px-7 text-[13px] font-semibold text-white transition-colors hover:bg-cipresa-950"
+              >
+                Voir le bilan
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
       </motion.section>
 
